@@ -13,14 +13,15 @@ import reactor.core.publisher.Mono;
 @RestController
 public class CategoryController {
 
+    public static final String API_V_1_CATEGORIES = "/api/v1/categories";
     private final CategoryRepository categoryRepository;
 
-    @GetMapping("/api/v1/categories")
+    @GetMapping(API_V_1_CATEGORIES)
     Flux<Category> list() {
         return categoryRepository.findAll();
     }
 
-    @GetMapping("/api/v1/categories/{id}")
+    @GetMapping( API_V_1_CATEGORIES + "/{id}")
     Mono<Category> getById(@PathVariable String id) {
         return categoryRepository.findById(id);
     }

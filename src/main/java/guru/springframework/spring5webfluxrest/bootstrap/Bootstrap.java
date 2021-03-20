@@ -31,22 +31,22 @@ public class Bootstrap implements CommandLineRunner {
 
     private void loadCategories() {
 
-        categoryRepository.save(Category.builder().description("Fruits").build());
-        categoryRepository.save(Category.builder().description("Nuts").build());
-        categoryRepository.save(Category.builder().description("Breads").build());
-        categoryRepository.save(Category.builder().description("Meats").build());
-        categoryRepository.save(Category.builder().description("Eggs").build());
+        categoryRepository.save(Category.builder().description("Fruits").build()).toProcessor().block();
+        categoryRepository.save(Category.builder().description("Nuts").build()).toProcessor().block();
+        categoryRepository.save(Category.builder().description("Breads").build()).toProcessor().block();
+        categoryRepository.save(Category.builder().description("Meats").build()).toProcessor().block();
+        categoryRepository.save(Category.builder().description("Eggs").build()).toProcessor().block();
 
         System.out.println("Loaded categories : " + categoryRepository.count().toProcessor().block());
     }
 
     private void loadVendors() {
 
-        vendorRepository.save(Vendor.builder().firstName("Joe").lastName("Buck").build());
-        vendorRepository.save(Vendor.builder().firstName("Michael").lastName("Weston").build());
-        vendorRepository.save(Vendor.builder().firstName("Jessie").lastName("Waters").build());
-        vendorRepository.save(Vendor.builder().firstName("Bill").lastName("Nershi").build());
-        vendorRepository.save(Vendor.builder().firstName("Jimmy").lastName("Buffet").build());
+        vendorRepository.save(Vendor.builder().firstName("Joe").lastName("Buck").build()).toProcessor().block();
+        vendorRepository.save(Vendor.builder().firstName("Michael").lastName("Weston").build()).toProcessor().block();
+        vendorRepository.save(Vendor.builder().firstName("Jessie").lastName("Waters").build()).toProcessor().block();
+        vendorRepository.save(Vendor.builder().firstName("Bill").lastName("Nershi").build()).toProcessor().block();
+        vendorRepository.save(Vendor.builder().firstName("Jimmy").lastName("Buffet").build()).toProcessor().block();
 
         System.out.println("Loaded vendors : " + vendorRepository.count().toProcessor().block());
     }

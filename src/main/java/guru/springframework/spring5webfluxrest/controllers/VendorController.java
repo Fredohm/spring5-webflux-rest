@@ -13,14 +13,15 @@ import reactor.core.publisher.Mono;
 @RestController
 public class VendorController {
 
+    public static final String API_V_1_VENDORS = "/api/v1/vendors";
     private final VendorRepository vendorRepository;
 
-    @GetMapping("/api/v1/vendors")
+    @GetMapping(API_V_1_VENDORS)
     Flux<Vendor> list() {
         return vendorRepository.findAll();
     }
 
-    @GetMapping("/api/v1/vendors/{id}")
+    @GetMapping(API_V_1_VENDORS + "/{id}")
     Mono<Vendor> getById(@PathVariable String id) {
         return vendorRepository.findById(id);
     }
