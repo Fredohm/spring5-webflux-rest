@@ -10,8 +10,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class VendorControllerTest {
 
     WebTestClient webTestClient;
@@ -42,5 +40,10 @@ class VendorControllerTest {
     void getById() {
         BDDMockito.given(vendorRepository.findById("someId"))
                 .willReturn(Mono.just(Vendor.builder().firstName("One").lastName("Name").build()));
+
+        webTestClient.get()
+                .uri("/api/v1/vendors/someId")
+                .exchange()
+                .expectBodyList(Vendor.class);
     }
 }
